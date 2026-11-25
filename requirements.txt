@@ -1,0 +1,6 @@
+rdflib
+chromadb
+pypdf
+ollama
+fastapi
+uvicorn

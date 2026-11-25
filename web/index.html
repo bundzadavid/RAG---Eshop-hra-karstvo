@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hračkárska poradňa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F3F6FC;
+  --surface: #FFFFFF;
+  --ink: #1A2B4C;
+  --muted: #5A6A88;
+  --line: #DBE3F1;
+  --yellow: #FFC233;
+  --yellow-ink: #3D2C00;
+  --blue: #2F6FEB;
+  --green: #1F9E63;
+  --red: #E5484D;
+  --brick-text: #FFFFFF;
+  --shadow: 0 1px 0 rgba(26, 43, 76, .06), 0 8px 24px -12px rgba(26, 43, 76, .25);
+  --display: "Baloo 2", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111A2C; --surface: #18233A; --ink: #E7EDF9; --muted: #9CAAC6; --line: #27344F;
+    --shadow: 0 1px 0 rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111A2C; --surface: #18233A; --ink: #E7EDF9; --muted: #9CAAC6; --line: #27344F;
+  --shadow: 0 1px 0 rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 17px/1.55 var(--body);
+  display: grid; grid-template-rows: auto 1fr; grid-template-columns: minmax(0, 1fr); overflow: hidden;
+}
+main { min-width: 0; }
+button, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+
+/* ---------- kocka (spoločný motív) ---------- */
+.brick {
+  --c: var(--blue); --t: var(--brick-text);
+  position: relative; background: var(--c); color: var(--t);
+  border-radius: 7px; box-shadow: inset 0 -4px 0 rgba(0,0,0,.16);
+}
+.brick::before {
+  content: ""; position: absolute; top: -6px; left: 12px;
+  width: 16px; height: 7px; border-radius: 4px 4px 0 0; background: var(--c);
+  box-shadow: 24px 0 0 var(--c);
+}
+.g-ontology { --c: var(--yellow); --t: var(--yellow-ink); }
+.g-pdf      { --c: var(--blue); }
+.g-vyrobca  { --c: var(--green); }
+.g-produkt  { --c: var(--red); }
+
+/* ---------- hlavička ---------- */
+header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px; border-bottom: 1px solid var(--line); background: var(--surface);
+}
+.logo { display: grid; gap: 7px; padding-top: 6px; }
+.logo span { display: block; height: 11px; width: 30px; }
+.logo span::before { top: -5px; left: 4px; width: 8px; height: 5px; box-shadow: 13px 0 0 var(--c); }
+.logo span:nth-child(1) { --c: var(--red); width: 30px; margin-left: 8px; }
+.logo span:nth-child(2) { --c: var(--yellow); width: 38px; }
+.logo span:nth-child(3) { --c: var(--blue); width: 38px; }
+header h1 { font: 700 26px/1 var(--display); margin: 0; letter-spacing: -.01em; }
+header p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.header-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.ghost {
+  border: 1px solid var(--line); background: transparent; border-radius: 999px;
+  padding: 6px 14px; cursor: pointer; font-size: 14px;
+}
+.ghost:hover { background: var(--paper); }
+#toggleSources { display: none; }
+
+/* ---------- rozloženie ---------- */
+.layout { display: grid; grid-template-columns: 300px 1fr; min-height: 0; }
+aside {
+  border-right: 1px solid var(--line); padding: 22px 20px; overflow-y: auto; background: var(--surface);
+}
+aside h2 { font: 600 19px/1.2 var(--display); margin: 0 0 4px; }
+aside .sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.src-group { margin-bottom: 20px; }
+.src-group h3 { font: 600 15px/1.2 var(--display); margin: 0 0 8px; color: var(--muted); }
+.src-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.src-group li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; font-size: 14px; line-height: 1.35; }
+.src-group li i { width: 14px; height: 10px; margin-top: 4px; border-radius: 3px; background: var(--c); box-shadow: inset 0 -2px 0 rgba(0,0,0,.15); }
+.src-group li small { display: block; color: var(--muted); font-size: 12.5px; }
+aside .model { margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+aside .model b { color: var(--ink); font-weight: 700; }
+
+main { display: grid; grid-template-rows: 1fr auto; min-height: 0; }
+#thread { overflow-y: auto; padding: 32px 24px 24px; scroll-behavior: smooth; }
+.col { max-width: 780px; margin: 0 auto; }
+
+/* ---------- prázdny stav ---------- */
+.welcome { padding-top: 6vh; }
+.welcome h2 { font: 700 clamp(34px, 5vw, 48px)/1.05 var(--display); margin: 0 0 12px; letter-spacing: -.02em; }
+.welcome p { color: var(--muted); max-width: 58ch; margin: 0 0 34px; }
+.suggestions { display: flex; flex-wrap: wrap; gap: 18px 12px; }
+.suggestions button {
+  border: 0; cursor: pointer; padding: 12px 16px 14px; text-align: left;
+  font-weight: 700; font-size: 15.5px; line-height: 1.3; max-width: 100%;
+  transition: transform .12s ease;
+}
+.suggestions button:hover { transform: translateY(-2px); }
+.suggestions button:active { transform: translateY(1px); box-shadow: inset 0 -1px 0 rgba(0,0,0,.16); }
+
+/* ---------- správy ---------- */
+.msg { margin-bottom: 28px; }
+.msg.user { display: flex; justify-content: flex-end; }
+.msg.user .bubble {
+  background: var(--ink); color: var(--paper); padding: 11px 16px; border-radius: 16px 16px 4px 16px;
+  max-width: 80%; white-space: pre-wrap;
+}
+.answer {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 20px 22px; box-shadow: var(--shadow);
+}
+.answer .status { color: var(--muted); font-size: 15px; display: flex; align-items: center; gap: 10px; }
+.answer .status::before {
+  content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--yellow);
+  animation: blink 1s ease-in-out infinite;
+}
+@keyframes blink { 50% { opacity: .25; } }
+.text { max-width: 70ch; }
+.text p { margin: 0 0 .75em; }
+.text p:last-child, .text ul:last-child, .text ol:last-child { margin-bottom: 0; }
+.text ul, .text ol { margin: 0 0 .75em; padding-left: 1.3em; }
+.text li { margin: .2em 0; }
+.text .caret { display: inline-block; width: 8px; height: 1em; background: var(--ink); vertical-align: -2px; margin-left: 2px; animation: blink .8s steps(1) infinite; }
+.cite {
+  border: 0; background: var(--c); color: var(--t); cursor: pointer;
+  font: 700 12px/1 var(--body); padding: 3px 6px 4px; border-radius: 4px; margin: 0 1px;
+  vertical-align: 2px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.18);
+}
+.err { color: var(--red); font-weight: 700; }
+
+/* ---------- zdroje pod odpoveďou ---------- */
+.sources { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.sources > span { display: block; font: 600 15px/1.2 var(--display); color: var(--muted); margin-bottom: 14px; }
+.bricks { display: flex; flex-wrap: wrap; gap: 16px 10px; }
+.bricks button {
+  border: 0; cursor: pointer; text-align: left; padding: 8px 12px 10px;
+  display: grid; grid-template-columns: auto 1fr; gap: 0 9px; align-items: baseline;
+  max-width: 100%; font-size: 13.5px; line-height: 1.3;
+}
+.bricks button b { font-size: 15px; grid-row: span 2; }
+.bricks button em { font-style: normal; opacity: .85; font-size: 12.5px; }
+.bricks button[aria-expanded="true"] { outline: 3px solid var(--ink); outline-offset: 2px; }
+.bricks button.flash { animation: flash .9s ease; }
+@keyframes flash { 30% { transform: translateY(-4px); } }
+.drop { animation: drop .45s cubic-bezier(.3, 1.5, .5, 1) both; }
+@keyframes drop { from { transform: translateY(-18px); opacity: 0; } }
+.snippet {
+  margin-top: 14px; padding: 14px 16px; border-radius: 10px; background: var(--paper);
+  border-left: 6px solid var(--c); font-size: 14.5px; white-space: pre-wrap; max-height: 320px; overflow-y: auto;
+}
+.snippet h4 { margin: 0 0 6px; font: 600 15px/1.3 var(--display); white-space: normal; }
+
+/* ---------- zadávanie ---------- */
+.composer { padding: 14px 24px 18px; background: linear-gradient(transparent, var(--paper) 30%); }
+.composer form {
+  display: flex; gap: 10px; align-items: flex-end;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 16px;
+  padding: 8px 8px 8px 16px; box-shadow: var(--shadow);
+}
+.composer form:focus-within { border-color: var(--blue); }
+textarea {
+  flex: 1; border: 0; background: transparent; resize: none; outline: none;
+  padding: 8px 0; max-height: 180px; line-height: 1.45;
+}
+textarea:focus-visible { outline: none; }
+.send {
+  --c: var(--ink); --t: var(--paper); border: 0; cursor: pointer; padding: 10px 18px 12px;
+  font: 700 16px/1 var(--display); white-space: nowrap;
+}
+.send:disabled { opacity: .45; cursor: not-allowed; }
+.send.stop { --c: var(--red); --t: #fff; }
+.hint { text-align: center; color: var(--muted); font-size: 12.5px; margin-top: 8px; }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  aside { display: none; position: fixed; inset: 64px 0 0 0; z-index: 5; border-right: 0; }
+  aside.open { display: block; }
+  #toggleSources { display: inline-block; }
+  header { padding: 12px 16px; gap: 10px; }
+  header p { display: none; }
+  header h1 { font-size: 21px; }
+  .ghost { padding: 6px 11px; }
+  #newChat .long { display: none; }
+  #thread { padding: 20px 16px; }
+  .composer { padding: 10px 16px 14px; }
+  .msg.user .bubble { max-width: 92%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" aria-hidden="true"><span class="brick"></span><span class="brick"></span><span class="brick"></span></div>
+  <div>
+    <h1>Hračkárska poradňa</h1>
+    <p>Odpovede z katalógu e-shopu a dokumentov o hračkách</p>
+  </div>
+  <div class="header-actions">
+    <button class="ghost" id="toggleSources" aria-controls="sidebar" aria-expanded="false">Zdroje</button>
+    <button class="ghost" id="newChat">Nová<span class="long"> konverzácia</span></button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside id="sidebar" aria-label="Zdroje poradne">
+    <h2>Čo poradňa pozná</h2>
+    <p class="sub" id="kbSummary">Načítavam…</p>
+    <div id="kbList"></div>
+    <div class="model" id="kbModel"></div>
+  </aside>
+
+  <main>
+    <div id="thread" aria-live="polite">
+      <div class="col" id="messages">
+        <section class="welcome" id="welcome">
+          <h2>Na čo sa chceš opýtať?</h2>
+          <p>Odpovedám z ontológie e-shopu (produkty, zákazníci, objednávky), z katalógov, návodov a pravidiel hier a z výročných správ výrobcov. Všetko beží na tomto počítači.</p>
+          <div class="suggestions">
+            <button class="brick g-ontology">Aké LEGO predávame a za koľko?</button>
+            <button class="brick g-produkt">Ako sa hrá Dixit?</button>
+            <button class="brick g-produkt">Aké novinky sú v katalógu LEGO?</button>
+            <button class="brick g-ontology">Kto napísal recenziu na LEGO?</button>
+            <button class="brick g-produkt">Na čo si dať pozor pri hračkách Nerf?</button>
+            <button class="brick g-ontology">Aké spoločenské hry máme v ponuke?</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="col">
+        <form id="form">
+          <textarea id="q" rows="1" aria-label="Otázka"placeholder="Napíš otázku, napr. Ktoré hračky sú pre deti od 3 rokov?" autofocus></textarea>
+          <button class="send brick" id="send" type="submit">Opýtať sa</button>
+        </form>
+        <div class="hint">Enter odošle, Shift+Enter pridá riadok. Odpoveď trvá zhruba pol minúty až minútu.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const messages = $("#messages"), thread = $("#thread"), form = $("#form"), q = $("#q"), send = $("#send");
+const welcomeHTML = $("#welcome").outerHTML;
+let controller = null;
+const sourceMap = new WeakMap(); // zdroje ku každej odpovedi (pre klik na citáciu)
+
+const GROUPS = {
+  ontology: "E-shop",
+  produkt: "Produkty, návody a pravidlá",
+  vyrobca: "Výrobcovia",
+  pdf: "Ostatné dokumenty",
+};
+
+/* ---------- prehľad zdrojov ---------- */
+async function loadInfo() {
+  try {
+    const r = await fetch("/api/info");
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+    const docs = d.sources.length;
+    $("#kbSummary").textContent = `${docs} zdrojov, ${d.chunks.toLocaleString("sk-SK")} úryvkov v databáze.`;
+    const byGroup = {};
+    d.sources.forEach(s => (byGroup[s.group] ??= []).push(s));
+    $("#kbList").innerHTML = Object.keys(GROUPS).filter(g => byGroup[g]).map(g => `
+      <div class="src-group g-${g}">
+        <h3>${GROUPS[g]}</h3>
+        <ul>${byGroup[g].map(s => `<li><i></i><span>${esc(s.name)}<small>${s.chunks} ${plural(s.chunks)}</small></span></li>`).join("")}</ul>
+      </div>`).join("");
+    $("#kbModel").innerHTML = `Odpovedá model <b>${esc(d.chat_model)}</b>, vyhľadáva <b>${esc(d.embed_model)}</b>. Nič sa neposiela na internet.`;
+  } catch (e) {
+    $("#kbSummary").textContent = e.message || "Server neodpovedá.";
+  }
+}
+const plural = n => n === 1 ? "úryvok" : (n >= 2 && n <= 4 ? "úryvky" : "úryvkov");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* ---------- jednoduchý markdown + citácie ---------- */
+function inline(s, sources) {
+  s = esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\s][^*]*?)\*(?!\*)/g, "$1<em>$2</em>");
+  return s.replace(/\[(\d+(?:\s*,\s*\d+)*)\]/g, (_, nums) =>
+    nums.split(",").map(n => {
+      n = parseInt(n, 10);
+      const src = sources.find(x => x.n === n);
+      return src ? `<button class="cite g-${src.group}" data-n="${n}" title="${esc(src.name)}">${n}</button>` : `[${n}]`;
+    }).join(""));
+}
+function render(md, sources) {
+  const lines = md.replace(/\r/g, "").split("\n");
+  let html = "", list = null, para = [];
+  const flushPara = () => { if (para.length) { html += `<p>${inline(para.join(" "), sources)}</p>`; para = []; } };
+  const closeList = () => { if (list) { html += `</${list}>`; list = null; } };
+  for (const raw of lines) {
+    const line = raw.trim();
+    let m;
+    if (!line) { flushPara(); closeList(); continue; }
+    if ((m = line.match(/^[*\-•]\s+(.*)/))) { flushPara(); if (list !== "ul") { closeList(); html += "<ul>"; list = "ul"; } html += `<li>${inline(m[1], sources)}</li>`; continue; }
+    if ((m = line.match(/^\d+[.)]\s+(.*)/))) { flushPara(); if (list !== "ol") { closeList(); html += "<ol>"; list = "ol"; } html += `<li>${inline(m[1], sources)}</li>`; continue; }
+    if ((m = line.match(/^#{1,6}\s+(.*)/))) { flushPara(); closeList(); html += `<p><strong>${inline(m[1], sources)}</strong></p>`; continue; }
+    closeList(); para.push(line);
+  }
+  flushPara(); closeList();
+  return html;
+}
+
+/* ---------- konverzácia ---------- */
+function addUser(text) {
+  $("#welcome")?.remove();
+  const el = document.createElement("div");
+  el.className = "msg user";
+  el.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+  messages.append(el);
+}
+function addAnswer() {
+  const el = document.createElement("div");
+  el.className = "msg";
+  el.innerHTML = `<div class="answer"><div class="status">Hľadám v ontológii a dokumentoch…</div><div class="text" hidden></div></div>`;
+  messages.append(el);
+  scrollDown();
+  return el;
+}
+function scrollDown() { thread.scrollTop = thread.scrollHeight; }
+
+function showSources(el, sources) {
+  if (!sources.length) return;
+  const box = document.createElement("div");
+  box.className = "sources";
+  box.innerHTML = `<span>Z čoho som vychádzal</span><div class="bricks">${sources.map((s, i) => `
+      <button class="brick g-${s.group} drop" style="animation-delay:${i * 70}ms" data-n="${s.n}" aria-expanded="false">
+        <b>${s.n}</b><span>${esc(s.name)}</span><em>${esc(s.where)}</em>
+      </button>`).join("")}</div><div class="detail"></div>`;
+  $(".answer", el).append(box);
+  sourceMap.set(box, sources);
+  box.addEventListener("click", e => {
+    const b = e.target.closest(".bricks button");
+    if (b) toggleSnippet(box, sources, +b.dataset.n);
+  });
+}
+function toggleSnippet(box, sources, n, forceOpen = false) {
+  const btn = $(`.bricks button[data-n="${n}"]`, box);
+  const detail = $(".detail", box);
+  const open = btn.getAttribute("aria-expanded") === "true";
+  box.querySelectorAll(".bricks button").forEach(b => b.setAttribute("aria-expanded", "false"));
+  if (open && !forceOpen) { detail.innerHTML = ""; return; }
+  const s = sources.find(x => x.n === n);
+  btn.setAttribute("aria-expanded", "true");
+  detail.innerHTML = `<div class="snippet g-${s.group}"><h4>${s.n}. ${esc(s.name)}, ${esc(s.where)}</h4>${esc(s.text)}</div>`;
+  btn.classList.remove("flash"); void btn.offsetWidth; btn.classList.add("flash");
+}
+
+async function ask(question) {
+  addUser(question);
+  const el = addAnswer();
+  const status = $(".status", el), textEl = $(".text", el);
+  let sources = [], text = "";
+  setBusy(true);
+  controller = new AbortController();
+  try {
+    const r = await fetch("/api/ask", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }), signal: controller.signal,
+    });
+    if (!r.ok || !r.body) throw new Error("Server neodpovedá. Je spustený spusti-web.bat?");
+    const reader = r.body.getReader(), dec = new TextDecoder();
+    let buf = "";
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let i;
+      while ((i = buf.indexOf("\n")) >= 0) {
+        const line = buf.slice(0, i); buf = buf.slice(i + 1);
+        if (!line.trim()) continue;
+        const ev = JSON.parse(line);
+        if (ev.type === "sources") {
+          sources = ev.sources;
+          status.textContent = sources.length ? "Píšem odpoveď…" : "Nič som nenašiel, skúsim odpovedať…";
+          showSources(el, sources);
+        } else if (ev.type === "token") {
+          text += ev.text;
+          status.hidden = true; textEl.hidden = false;
+          textEl.innerHTML = render(text, sources) + `<span class="caret"></span>`;
+        } else if (ev.type === "error") {
+          throw new Error(ev.message);
+        }
+      }
+      if (thread.scrollHeight - thread.scrollTop - thread.clientHeight < 160) scrollDown();
+    }
+    textEl.innerHTML = render(text, sources);
+  } catch (e) {
+    status.hidden = true; textEl.hidden = false;
+    if (e.name === "AbortError") {
+      textEl.innerHTML = (text ? render(text, sources) : "") + `<p class="err">Odpoveď zastavená.</p>`;
+    } else {
+      textEl.innerHTML = (text ? render(text, sources) : "") + `<p class="err">${esc(e.message)}</p>`;
+    }
+  } finally {
+    setBusy(false);
+    controller = null;
+  }
+}
+
+function setBusy(busy) {
+  send.textContent = busy ? "Zastaviť" : "Opýtať sa";
+  send.classList.toggle("stop", busy);
+  send.type = busy ? "button" : "submit";
+  q.disabled = busy;
+  if (!busy) q.focus();
+}
+
+/* ---------- udalosti ---------- */
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const text = q.value.trim();
+  if (!text || controller) return;
+  q.value = ""; autosize();
+  ask(text);
+});
+send.addEventListener("click", () => { if (controller) controller.abort(); });
+q.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+});
+const autosize = () => { q.style.height = "auto"; q.style.height = Math.min(q.scrollHeight, 180) + "px"; };
+q.addEventListener("input", autosize);
+
+messages.addEventListener("click", e => {
+  const sug = e.target.closest(".suggestions button");
+  if (sug && !controller) { ask(sug.textContent); return; }
+  const cite = e.target.closest(".cite");
+  if (cite) {
+    const box = $(".sources", cite.closest(".answer"));
+    if (box && sourceMap.has(box)) {
+      toggleSnippet(box, sourceMap.get(box), +cite.dataset.n, true);
+      $(".detail", box).scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  }
+});
+
+$("#newChat").addEventListener("click", () => {
+  if (controller) controller.abort();
+  messages.innerHTML = welcomeHTML;
+  q.focus();
+});
+$("#toggleSources").addEventListener("click", e => {
+  const open = $("#sidebar").classList.toggle("open");
+  e.currentTarget.setAttribute("aria-expanded", open);
+});
+
+loadInfo();
+</script>
+</body>
+</html>

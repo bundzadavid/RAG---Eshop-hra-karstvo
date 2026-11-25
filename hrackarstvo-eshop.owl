@@ -1,0 +1,1677 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/hrackarstvo-eshop#"
+     xml:base="http://example.org/hrackarstvo-eshop"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:hrackarstvo-eshop="http://example.org/hrackarstvo-eshop#">
+    <owl:Ontology rdf:about="http://example.org/hrackarstvo-eshop">
+        <rdfs:comment xml:lang="sk">Ontológia internetového obchodu s hračkami: katalóg, sklad, zákazníci, objednávky, platby a doručenie.</rdfs:comment>
+        <rdfs:label xml:lang="sk">Hračkárstvo e-shop – rozšírená ontológia</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#hodnotíProdukt -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#hodnotíProdukt">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Recenzia"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:label xml:lang="sk">hodnotí produkt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#jePodkategóriou -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#jePodkategóriou">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:label xml:lang="sk">je podkategóriou</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máAdresu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máAdresu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Zákazník"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Adresa"/>
+        <rdfs:label xml:lang="sk">má adresu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máDopravcu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máDopravcu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Doručenie"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Dopravca"/>
+        <rdfs:label xml:lang="sk">má dopravcu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máDoručenie -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máDoručenie">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Doručenie"/>
+        <rdfs:label xml:lang="sk">má doručenie</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máPlatbu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máPlatbu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Platba"/>
+        <rdfs:label xml:lang="sk">má platbu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máVýrobcu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máVýrobcu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <rdfs:label xml:lang="sk">má výrobcu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#máZľavu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#máZľavu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Zľava"/>
+        <rdfs:label xml:lang="sk">má zľavu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#napísalRecenziu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#napísalRecenziu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Zákazník"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Recenzia"/>
+        <rdfs:label xml:lang="sk">napísal recenziu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#obsahujePoložku -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#obsahujePoložku">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#PoložkaObjednávky"/>
+        <rdfs:label xml:lang="sk">obsahuje položku</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#obsahujeProdukt -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#obsahujeProdukt">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Košík"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:label xml:lang="sk">obsahuje produkt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#patríDoKategórie -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#patríDoKategórie">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:label xml:lang="sk">patrí do kategórie</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#používaSpôsobPlatby -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#používaSpôsobPlatby">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Platba"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#SpôsobPlatby"/>
+        <rdfs:label xml:lang="sk">používa spôsob platby</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#spravujeSklad -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#spravujeSklad">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Sklad"/>
+        <rdfs:label xml:lang="sk">eviduje skladovú zásobu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#týkaSaProduktu -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#týkaSaProduktu">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#PoložkaObjednávky"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:label xml:lang="sk">týka sa produktu</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#uplatňujeKupón -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#uplatňujeKupón">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Kupón"/>
+        <rdfs:label xml:lang="sk">uplatňuje kupón</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#vytvoril -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/hrackarstvo-eshop#vytvoril">
+        <rdfs:domain rdf:resource="http://example.org/hrackarstvo-eshop#Zákazník"/>
+        <rdfs:range rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:label xml:lang="sk">vytvoril objednávku</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PSČ -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#PSČ">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">PSČ</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#celkováCena -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#celkováCena">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="sk">celková cena objednávky</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#cena -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#cena">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="sk">cena</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#cenaDopravy -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#cenaDopravy">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="sk">cena dopravy</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#dostupnosť -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#dostupnosť">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">dostupnosť</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#dátumObjednávky -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#dátumObjednávky">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="sk">dátum objednávky</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#dátumRecenzie -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#dátumRecenzie">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="sk">dátum recenzie</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#email -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#email">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">email</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#farba -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#farba">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">farba</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#hmotnosťKg -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#hmotnosťKg">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="sk">hmotnosť v kg</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#hodnotenie -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#hodnotenie">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">hodnotenie</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#jeNajpredávanejší -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#jeNajpredávanejší">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="sk">je najpredávanejší</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#jeNovinka -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#jeNovinka">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="sk">je novinka</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#krajina -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#krajina">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">krajina</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#kódKupónu -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#kódKupónu">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">kód kupónu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#materiál -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#materiál">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">materiál</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#meno -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#meno">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">meno</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#mesto -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#mesto">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">mesto</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#množstvo -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#množstvo">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">množstvo</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#názov -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#názov">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">názov</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#názovSpôsobu -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#názovSpôsobu">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">názov spôsobu platby</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#obrázokURL -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#obrázokURL">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:label xml:lang="sk">URL obrázka produktu</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#percentoZľavy -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#percentoZľavy">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">percento zľavy</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#platnosťDo -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#platnosťDo">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:label xml:lang="sk">platnosť do</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#popis -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#popis">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">popis</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#priezvisko -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#priezvisko">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">priezvisko</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#pôvodnáCena -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#pôvodnáCena">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="sk">pôvodná cena</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#rozmery -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#rozmery">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">rozmery</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#skladom -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#skladom">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">počet kusov na sklade</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#sku -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#sku">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">kód produktu SKU</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#stav -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#stav">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">stav</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#telefón -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#telefón">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">telefón</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#textRecenzie -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#textRecenzie">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">text recenzie</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#ulica -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#ulica">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">ulica</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#vekDo -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#vekDo">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">odporúčaný vek do</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#vekOd -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#vekOd">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="sk">odporúčaný vek od</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#značka -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#značka">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">značka</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#čiarovýKód -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#čiarovýKód">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">čiarový kód</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#čísloObjednávky -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#čísloObjednávky">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">číslo objednávky</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#čísloSledovania -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/hrackarstvo-eshop#čísloSledovania">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="sk">číslo zásielky</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Adresa -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Adresa">
+        <rdfs:label xml:lang="sk">Adresa</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Dopravca -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Dopravca">
+        <rdfs:label xml:lang="sk">Dopravca</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Doručenie -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Doručenie">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Dopravca"/>
+        <rdfs:label xml:lang="sk">Doručenie</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Hračka -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Hračka">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#HotWheelsAuto"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoClassicKrabica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoFriendsKaviaren"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoTechnicAuto"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Hračka</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Kategória -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Kategória">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <rdfs:label xml:lang="sk">Kategória</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Košík -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Košík">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Nákupný košík</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Kupón -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Kupón">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Zľava"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#máZľavu"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Kupón</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Objednávka -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Objednávka">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Dopravca"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Doručenie"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Objednávka</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Platba -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Platba">
+        <rdfs:label xml:lang="sk">Platba</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PoložkaObjednávky -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#PoložkaObjednávky">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <rdfs:label xml:lang="sk">Položka objednávky</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Produkt -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Produkt">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujePoložku"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Hračka"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Produkt</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Recenzia -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Recenzia">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Zákazník"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#napísalRecenziu"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#ZakaznikJana"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#dátumRecenzie"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13.10.2026</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#textRecenzie"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Velmi dobra hračka</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Recenzia</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#RegistrovanýZákazník -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#RegistrovanýZákazník">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Zákazník"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#používaSpôsobPlatby"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#PlatbaKartou"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Registrovaný zákazník</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Sklad -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Sklad">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#obsahujeProdukt"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Sklad</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#SpôsobPlatby -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#SpôsobPlatby">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Platba"/>
+        <rdfs:label xml:lang="sk">Spôsob platby</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#StavObjednávky -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#StavObjednávky">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Doručenie"/>
+        <rdfs:label xml:lang="sk">Stav objednávky</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Výrobca -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Výrobca">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Hračka"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Výrobca</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Zákazník -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Zákazník">
+        <rdfs:label xml:lang="sk">Zákazník</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Zľava -->
+
+    <owl:Class rdf:about="http://example.org/hrackarstvo-eshop#Zľava">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Produkt"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#týkaSaProduktu"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/hrackarstvo-eshop#Zľava"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="sk">Zľava</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/R8O0amBORsR7wq3vCzq85sB -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/R8O0amBORsR7wq3vCzq85sB">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoClassicKrabica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoFriendsKaviaren"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#LegoTechnicAuto"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>LEGO</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RBGv0vEojBz1mvp5nzL5ANL -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RBGv0vEojBz1mvp5nzL5ANL">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#HotWheelsAuto"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>HotWheels</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://webprotege.stanford.edu/RtnIMt4s6KP7TuDx0CbKF2 -->
+
+    <owl:Class rdf:about="http://webprotege.stanford.edu/RtnIMt4s6KP7TuDx0CbKF2">
+        <rdfs:subClassOf rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#BarbieDomcek"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#BarbieFashionista"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/hrackarstvo-eshop#vytvoril"/>
+                <owl:hasValue rdf:resource="http://example.org/hrackarstvo-eshop#BarbieKabriolet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>Mattel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#AbecedneKocky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#AbecedneKocky">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#VzdelávacieHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">11.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abecedné kocky</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kocky s písmenami na učenie abecedy.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-8001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#AdresaJana -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#AdresaJana">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Adresa"/>
+        <PSČ rdf:datatype="http://www.w3.org/2001/XMLSchema#string">04001</PSČ>
+        <krajina rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slovensko</krajina>
+        <mesto rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Košice</mesto>
+        <ulica rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hračkárska 12</ulica>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Autíčka -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Autíčka">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Autíčka a vozidlá</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#BarbieDomcek -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#BarbieDomcek">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Mattel"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Bábiky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">89.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Barbie domček</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Domček pre bábiky s nábytkom.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-3002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#BarbieFashionista -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#BarbieFashionista">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Mattel"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Bábiky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Barbie Fashionista</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Módna bábika s oblečením.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-3001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#BarbieKabriolet -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#BarbieKabriolet">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Mattel"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Autíčka"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">24.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Barbie kabriolet</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kabriolet pre bábiky Barbie.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-2002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Bicykel -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Bicykel">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#SpinMaster"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#VonkajšieHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">79.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Detský bicykel</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Detský bicykel na vonkajšie aktivity.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-7001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinMaster</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Bábiky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Bábiky">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bábiky</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#CentrálnySklad -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#CentrálnySklad">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Sklad"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Centrálny sklad</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Dixit -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Dixit">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Ravensburger"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#SpoločenskéHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">29.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dixit</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kreatívna hra s ilustrovanými kartami.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-5003</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ravensburger</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Hasbro -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Hasbro">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#HotWheelsAuto -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#HotWheelsAuto">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Mattel"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Autíčka"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot Wheels pretekárske autíčko</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kovové zberateľské autíčko.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-2001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#HračkyPreNajmenších -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#HračkyPreNajmenších">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hračky pre najmenších</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Jednorozec -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Jednorozec">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#SpinMaster"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#PlyšovéHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plyšový jednorožec</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Farebný plyšový jednorožec.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-4002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinMaster</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Jenga -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Jenga">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#SpoločenskéHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">18.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jenga</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zručnostná hra s drevenými blokmi.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-5002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#JesennáZľava -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#JesennáZľava">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Zľava"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jesenná zľava</názov>
+        <percentoZľavy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</percentoZľavy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Koralky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Koralky">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#KreatívneHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kreatívna sada korálikov</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sada farebných korálikov na tvorenie.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-9001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#KreatívneHračky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#KreatívneHračky">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kreatívne sady</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#KupónHRACKY10 -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#KupónHRACKY10">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kupón"/>
+        <kódKupónu rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HRACKY10</kódKupónu>
+        <percentoZľavy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</percentoZľavy>
+        <platnosťDo rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-12-31</platnosťDo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Kurier -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Kurier">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Dopravca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kuriérska služba</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#LEGO -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#LEGO">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Stavebnice"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">49.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO City Policajná stanica</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stavebnica policajnej stanice s vozidlami a figúrkami.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-1001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#LegoClassicKrabica -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#LegoClassicKrabica">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Stavebnice"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">29.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO Classic kreatívna krabica</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Farebná sada kociek na voľné stavanie.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-1002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#LegoFriendsKaviaren -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#LegoFriendsKaviaren">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Stavebnice"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34.50</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO Friends kaviareň</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stavebnica kaviarne s doplnkami.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-1003</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#LegoTechnicAuto -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#LegoTechnicAuto">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#LEGO"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Stavebnice"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO Technic športové auto</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Technická stavebnica športového auta.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-1004</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEGO</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Lopta -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Lopta">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#VonkajšieHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.50</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Farebná lopta</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ľahká lopta na hry vonku.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-7002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#MagnetickaTabula -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#MagnetickaTabula">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Mattel"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#VzdelávacieHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">19.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Magnetická tabuľa</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tabuľa na kreslenie a učenie.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-8002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Mattel -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Mattel">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mattel</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#MedvedMisko -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#MedvedMisko">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#SpinMaster"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#PlyšovéHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">16.50</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plyšový medvedík Miško</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mäkký plyšový medvedík.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-4001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinMaster</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#ModelovaciaHmota -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#ModelovaciaHmota">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#KreatívneHračky"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.50</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modelovacia hmota</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modelovacia hmota v rôznych farbách.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-9002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Monopoly -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Monopoly">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#SpoločenskéHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">27.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monopoly Classic</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rodinná hra s obchodovaním a nehnuteľnosťami.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-5001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Nerf -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Nerf">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Hračka"/>
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Hasbro"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#VonkajšieHry"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">22.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nerf penová hračka</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Detská penová vystreľovacia hračka.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-7003</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hasbro</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Objednavka10001 -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Objednavka10001">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Objednávka"/>
+        <máDoručenie rdf:resource="http://example.org/hrackarstvo-eshop#StandardneDorucenie"/>
+        <máPlatbu rdf:resource="http://example.org/hrackarstvo-eshop#PlatbaKartou"/>
+        <obsahujePoložku rdf:resource="http://example.org/hrackarstvo-eshop#Polozka10001A"/>
+        <obsahujePoložku rdf:resource="http://example.org/hrackarstvo-eshop#Polozka10001B"/>
+        <celkováCena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">53.98</celkováCena>
+        <dátumObjednávky rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-10</dátumObjednávky>
+        <stav rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spracováva sa</stav>
+        <čísloObjednávky rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OBJ-10001</čísloObjednávky>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PlatbaKartou -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PlatbaKartou">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Platba"/>
+        <používaSpôsobPlatby rdf:resource="http://example.org/hrackarstvo-eshop#TypPlatbyKartou"/>
+        <stav rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zaplatená</stav>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Playmobil -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Playmobil">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Playmobil</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PlaymobilHrad -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PlaymobilHrad">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Playmobil"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#Stavebnice"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">44.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Playmobil hrad</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hrací hrad s postavičkami a príslušenstvom.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-1005</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Playmobil</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PlyšovéHračky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PlyšovéHračky">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Plyšové hračky</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Polozka10001A -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Polozka10001A">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#PoložkaObjednávky"/>
+        <týkaSaProduktu rdf:resource="http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica"/>
+        <množstvo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</množstvo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Polozka10001B -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Polozka10001B">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#PoložkaObjednávky"/>
+        <týkaSaProduktu rdf:resource="http://example.org/hrackarstvo-eshop#HotWheelsAuto"/>
+        <množstvo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</množstvo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PuzzleKategória -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PuzzleKategória">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Puzzle</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PuzzleMesto -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PuzzleMesto">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Ravensburger"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#PuzzleKategória"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.50</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Puzzle mesto 500 dielikov</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Puzzle mestského panorámu.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-6002</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ravensburger</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#PuzzleZvierata -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#PuzzleZvierata">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Ravensburger"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#PuzzleKategória"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.99</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Puzzle zvieratá 100 dielikov</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Detské puzzle so zvieratami.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-6001</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ravensburger</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Ravensburger -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Ravensburger">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ravensburger</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#RecenziaJanaLego -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#RecenziaJanaLego">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Recenzia"/>
+        <hodnotíProdukt rdf:resource="http://example.org/hrackarstvo-eshop#LegoCityPolicajnaStanica"/>
+        <dátumRecenzie rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-11</dátumRecenzie>
+        <hodnotenie rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</hodnotenie>
+        <textRecenzie rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skvelá stavebnica, dieťa sa s ňou dlho hrá.</textRecenzie>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#SpinMaster -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#SpinMaster">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Výrobca"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spin Master</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#SpoločenskéHry -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#SpoločenskéHry">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spoločenské hry</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#StandardneDorucenie -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#StandardneDorucenie">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Doručenie"/>
+        <máDopravcu rdf:resource="http://example.org/hrackarstvo-eshop#Kurier"/>
+        <cenaDopravy rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.99</cenaDopravy>
+        <stav rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pripravuje sa</stav>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Stavebnice -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Stavebnice">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stavebnice</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#TypPlatbyKartou -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#TypPlatbyKartou">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#SpôsobPlatby"/>
+        <názovSpôsobu rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Platba kartou</názovSpôsobu>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#Vkladacka -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#Vkladacka">
+        <máVýrobcu rdf:resource="http://example.org/hrackarstvo-eshop#Playmobil"/>
+        <patríDoKategórie rdf:resource="http://example.org/hrackarstvo-eshop#HračkyPreNajmenších"/>
+        <cena rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">14.90</cena>
+        <jeNajpredávanejší rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNajpredávanejší>
+        <jeNovinka rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</jeNovinka>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drevená vkladačka</názov>
+        <popis rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drevená vkladačka tvarov pre malé deti.</popis>
+        <skladom rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</skladom>
+        <sku rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HR-8003</sku>
+        <vekOd rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</vekOd>
+        <značka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Playmobil</značka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#VonkajšieHry -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#VonkajšieHry">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hračky na von</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#VzdelávacieHračky -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#VzdelávacieHračky">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#Kategória"/>
+        <názov rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vzdelávacie hračky</názov>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://example.org/hrackarstvo-eshop#ZakaznikJana -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/hrackarstvo-eshop#ZakaznikJana">
+        <rdf:type rdf:resource="http://example.org/hrackarstvo-eshop#RegistrovanýZákazník"/>
+        <máAdresu rdf:resource="http://example.org/hrackarstvo-eshop#AdresaJana"/>
+        <napísalRecenziu rdf:resource="http://example.org/hrackarstvo-eshop#RecenziaJanaLego"/>
+        <vytvoril rdf:resource="http://example.org/hrackarstvo-eshop#Objednavka10001"/>
+        <email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jana.novakova@example.com</email>
+        <meno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jana</meno>
+        <priezvisko rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nováková</priezvisko>
+        <telefón rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+421900123456</telefón>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi -->
+

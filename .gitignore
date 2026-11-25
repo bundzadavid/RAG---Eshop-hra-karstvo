@@ -1,0 +1,14 @@
+# Python prostredie a cache
+.venv/
+__pycache__/
+*.pyc
+
+# Vektorová databáza – vytvorí sa príkazom: python ingest.py
+db/
+
+# PDF sa sťahujú skriptom stiahni_pdf.py (veľkosť + autorské práva)
+pdfs/
+*.pdf
+
+# Nedokončené sťahovania prehliadača
+*.crdownload

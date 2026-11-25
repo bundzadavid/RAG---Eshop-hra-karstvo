@@ -7,6 +7,9 @@ RAG (Retrieval-Augmented Generation) nad **OWL ontológiou e-shopu s hračkami**
 - **ChromaDB** – vektorová databáza uložená v priečinku `db/`
 - **FastAPI + vlastné webové rozhranie** – otázky v prehliadači, odpoveď sa vypisuje priebežne, zdroje sa dajú rozkliknúť
 
+📄 Podrobná dokumentácia (architektúra, ontológia, spracovanie dát, vyhľadávanie, API, testovanie):
+**[docs/DOKUMENTACIA.md](docs/DOKUMENTACIA.md)**
+
 ## Inštalácia od nuly (Windows)
 1. Nainštaluj [Ollama](https://ollama.com/download) a Python 3.11+.
 2. V priečinku projektu (PowerShell):
